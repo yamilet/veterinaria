@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMascotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_idMascota}" for="idMascota" />
+                    <h:inputText id="idMascota" value="#{mascotaController.selected.idMascota}" title="#{bundle.CreateMascotaTitle_idMascota}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_idMascota}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_especie}" for="especie" />
+                    <h:inputText id="especie" value="#{mascotaController.selected.especie}" title="#{bundle.CreateMascotaTitle_especie}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_especie}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{mascotaController.selected.nombre}" title="#{bundle.CreateMascotaTitle_nombre}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_genero}" for="genero" />
+                    <h:inputText id="genero" value="#{mascotaController.selected.genero}" title="#{bundle.CreateMascotaTitle_genero}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_genero}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_raza}" for="raza" />
+                    <h:inputText id="raza" value="#{mascotaController.selected.raza}" title="#{bundle.CreateMascotaTitle_raza}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_raza}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_color}" for="color" />
+                    <h:inputText id="color" value="#{mascotaController.selected.color}" title="#{bundle.CreateMascotaTitle_color}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_color}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{mascotaController.selected.fechaNacimiento}" title="#{bundle.CreateMascotaTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_peso}" for="peso" />
+                    <h:inputText id="peso" value="#{mascotaController.selected.peso}" title="#{bundle.CreateMascotaTitle_peso}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_peso}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_observaciones}" for="observaciones" />
+                    <h:inputText id="observaciones" value="#{mascotaController.selected.observaciones}" title="#{bundle.CreateMascotaTitle_observaciones}" />
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_idCliente}" for="idCliente" />
+                    <h:selectOneMenu id="idCliente" value="#{mascotaController.selected.idCliente}" title="#{bundle.CreateMascotaTitle_idCliente}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_idCliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mascotaController.create}" value="#{bundle.CreateMascotaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mascotaController.prepareList}" value="#{bundle.CreateMascotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMascotaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
